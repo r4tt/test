@@ -1,10 +1,10 @@
-package com.example.server.infrastructure.task
+package com.example.server.infrastructure.user
 
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface TaskRepo: CoroutineCrudRepository<Task, UUID> {
+interface UserRepo: CoroutineCrudRepository<User, UUID> {
 
 }

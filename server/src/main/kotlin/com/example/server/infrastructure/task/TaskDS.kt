@@ -1,5 +1,6 @@
 package com.example.server.infrastructure.task
 
+import com.example.domain.model.TaskEntity
 import com.example.domain.usecase.task.TaskDataSource
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
@@ -10,14 +11,14 @@ class TaskDS(
     private val taskRepo: TaskRepo,
 ) : TaskDataSource {
 
-    override suspend fun createTask(): Long {
-        taskRepo.save(
-            Task(
-                title = "dd",
-                description = "1",
-            )
-        )
-        return 1
+    override suspend fun createTask(
+        taskEntity: TaskEntity,
+    ): TaskEntity {
+        return taskRepo.save(Task.fromDomainModel(taskEntity)).toDomainModel()
+    }
+
+    override suspend fun getNumberOfTaskOnToDay(userId: String): Long {
+        TODO("Not yet implemented")
     }
 
 }

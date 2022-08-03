@@ -1,4 +1,4 @@
-package com.example.domain.model
+package com.example.server.model
 
 data class TaskRespone(
     val code: Int = 0,
