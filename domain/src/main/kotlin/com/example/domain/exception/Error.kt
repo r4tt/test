@@ -9,8 +9,8 @@ sealed class Error(
     companion object {
         const val UNEXPECTED_ERROR_STATUS_CODE = 500_000
         const val NOT_FOUND_ERROR_STATUS_CODE = 404_000
-        const val UNAUTHORIZED_ERROR_STATUS_CODE = 401_000
-        const val SERIALIZATION_ERROR_STATUS_CODE = 400_000
+        const val OUT_OF_LIMIT_TASK_CODE = 400_001
+        const val USER_IS_NOT_EXIT = 400_002
     }
     class UnexpectedError(
         cause: Throwable?,
@@ -26,5 +26,17 @@ sealed class Error(
         code = NOT_FOUND_ERROR_STATUS_CODE,
         message = "Not found",
         cause = cause,
+    )
+
+    object OutOfLimitTask : Error(
+        code = OUT_OF_LIMIT_TASK_CODE,
+        message = "out of limit task",
+        cause = null,
+    )
+
+    object UserIsNotExit : Error(
+        code = USER_IS_NOT_EXIT,
+        message = "user is not exit",
+        cause = null,
     )
 }

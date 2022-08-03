@@ -1,9 +1,9 @@
-package com.example.domain.model
+package com.example.server.display
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 
-data class TaskEntity(
+data class TaskDto(
     val id: String,
     val title: String,
     val description: String,

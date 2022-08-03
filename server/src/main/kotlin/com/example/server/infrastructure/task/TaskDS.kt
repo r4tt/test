@@ -4,6 +4,7 @@ import com.example.domain.model.TaskEntity
 import com.example.domain.usecase.task.TaskDataSource
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
+import java.util.*
 
 @Component
 @Transactional
@@ -18,7 +19,7 @@ class TaskDS(
     }
 
     override suspend fun getNumberOfTaskOnToDay(userId: String): Long {
-        TODO("Not yet implemented")
+        return taskRepo.getTaskInDayByUserId(UUID.fromString(userId))
     }
 
 }
