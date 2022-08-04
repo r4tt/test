@@ -12,20 +12,21 @@ import java.util.*
 data class User(
     @Id
     @Column("id")
-    var uid: UUID = UUID.randomUUID(),
+    var uid: String = UUID.randomUUID().toString(),
     @Column("limit_task")
     var limitTask: Long,
-) : Persistable<UUID> {
+) : Persistable<String> {
 
     @Transient
     internal var isNewUser: Boolean = true
 
-    override fun getId() = uid
+    override fun getId(): String = uid
 
-    override fun isNew() = isNewUser
+    override fun isNew(): Boolean = isNewUser
+
 }
 
 fun User.toDomainModel(): UserEntity = UserEntity(
-    id = uid.toString(),
+    id = uid,
     limitTask = limitTask,
 )

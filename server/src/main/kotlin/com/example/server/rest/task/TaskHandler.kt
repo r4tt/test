@@ -8,6 +8,7 @@ import com.example.server.display.TaskRespone
 import com.example.server.mapping.toDisplayModel
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.*
+import java.util.*
 
 
 @Component
@@ -20,14 +21,13 @@ class TaskHandler(
         val taskEntity = createTask(
             CreateTask.CreateTaskParam(
                 TaskEntity(
-                    id = req.id,
                     title =  req.title,
                     description = req.description,
                     userId = req.userId
                 )
             )
         ).getOrElse { throw it }
-
+        println("AAAAA "+ taskEntity)
         return ServerResponse.ok().bodyValueAndAwait(
             TaskRespone(
                 data = taskEntity.toDisplayModel()

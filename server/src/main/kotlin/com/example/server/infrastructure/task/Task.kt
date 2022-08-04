@@ -4,49 +4,48 @@ import com.example.domain.model.TaskEntity
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
 import org.springframework.data.annotation.Transient
 import org.springframework.data.domain.Persistable
+import java.time.LocalDateTime
 import java.util.*
 
 @Table("tasks")
 data class Task(
     @Id
     @Column("id")
-    var uid: UUID = UUID.randomUUID(),
+    var uid: String = UUID.randomUUID().toString(),
     @Column("title")
     val title: String,
     @Column("description")
     val description : String,
     @Column("user_id")
-    val userId: UUID? = null,
+    val userId: String,
     @Column("created_at")
-    var createdAt: Instant = Clock.System.now(),
+    var createdAt: LocalDateTime = LocalDateTime.now(),
     @Column("updated_at")
-    var updatedAt: Instant = Clock.System.now(),
-) : Persistable<UUID> {
+    var updatedAt: LocalDateTime = LocalDateTime.now(),
+) : Persistable<String> {
 
     @Transient
     internal var isNewTask: Boolean = true
 
     companion object {
         fun fromDomainModel(entity: TaskEntity): Task = Task(
-            uid = UUID.fromString(entity.id),
+            uid = entity.id,
             title = entity.title,
             description =  entity.description,
-            userId = UUID.fromString(entity.userId),
+            userId = entity.userId
         )
     }
 
-    override fun getId() = uid
+    override fun getId(): String = uid
 
-    override fun isNew() = isNewTask
+    override fun isNew(): Boolean = isNewTask
 }
 
 fun Task.toDomainModel() : TaskEntity = TaskEntity(
-    id = uid.toString(),
+    id = uid,
     title = title,
     description = description,
-    userId = userId.toString()
+    userId = userId
 )

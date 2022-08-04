@@ -3,10 +3,9 @@ package com.example.server.infrastructure.task
 import org.springframework.data.r2dbc.repository.Query
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Repository
-import java.util.*
 
 @Repository
-interface TaskRepo : CoroutineCrudRepository<Task, UUID> {
+interface TaskRepo : CoroutineCrudRepository<Task, Long> {
 
     @Query(
         """
@@ -16,5 +15,5 @@ interface TaskRepo : CoroutineCrudRepository<Task, UUID> {
         AND user_id = :userId
     """
     )
-    suspend fun getTaskInDayByUserId(userId: UUID): Long
+    suspend fun getTaskInDayByUserId(userId: String): Long
 }

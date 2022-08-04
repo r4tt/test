@@ -38,7 +38,6 @@ dependencies {
     runtimeOnly("dev.miku:r2dbc-mysql")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
 }

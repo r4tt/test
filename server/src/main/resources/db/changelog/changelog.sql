@@ -5,9 +5,9 @@
 DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
-    id         binary(16) NOT NULL
+    id         varchar(64) NOT NULL
         primary key,
-    limit_task int        NOT NULL
+    limit_task int         NOT NULL
 );
 
 --changeset chiennv:3
@@ -15,13 +15,13 @@ CREATE TABLE users
 DROP TABLE IF EXISTS notes;
 CREATE TABLE tasks
 (
-    id          binary(16)                          NOT NULL
+    id          varchar(64)                        NOT NULL
         primary key,
-    title       varchar(64)                         NOT NULL,
-    description varchar(255)                        NOT NULL,
-    user_id     binary(16)                          NOT NULL,
-    created_at   timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at  timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    title       varchar(64)                        NOT NULL,
+    description varchar(255)                       NOT NULL,
+    user_id     varchar(64)                        NOT NULL,
+    created_at  DateTime DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at  DateTime DEFAULT CURRENT_TIMESTAMP NOT NULL,
     constraint tasks_ibfk_1
         foreign key (user_id) references users (id)
             on delete cascade

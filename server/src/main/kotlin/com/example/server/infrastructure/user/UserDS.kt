@@ -4,7 +4,6 @@ import com.example.domain.model.UserEntity
 import com.example.domain.usecase.user.UserDateSource
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
-import java.util.*
 
 @Component
 @Transactional
@@ -12,6 +11,6 @@ class UserDS(
     private val userRepo: UserRepo,
 ) : UserDateSource {
     override suspend fun getUser(userId: String): UserEntity? {
-        return userRepo.findById(UUID.fromString(userId))?.toDomainModel()
+        return userRepo.findById(userId)?.toDomainModel()
     }
 }

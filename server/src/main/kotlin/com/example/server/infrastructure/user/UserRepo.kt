@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface UserRepo: CoroutineCrudRepository<User, UUID> {
+interface UserRepo: CoroutineCrudRepository<User, String> {
 
 }
