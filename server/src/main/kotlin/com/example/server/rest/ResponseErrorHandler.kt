@@ -33,7 +33,6 @@ class ResponseErrorHandler(
             .invoke { request ->
                 val error = attributes.mapError(request)
                 val response = when (error) {
-
                     else -> ErrorResponse(
                         statusCode = error.code,
                         error = error.message,

@@ -12,7 +12,7 @@ class CreateTask(
 
     override suspend fun run(params: CreateTaskParam): TaskEntity {
         val user = userDataSource.getUser(params.task.userId) ?: throw Error.UserIsNotExit
-        if (user.limitTask < taskDataSource.getNumberOfTaskOnToDay(params.task.userId)) throw Error.OutOfLimitTask
+        if (user.limitTask <= taskDataSource.getNumberOfTaskOnToDay(params.task.userId)) throw Error.OutOfLimitTask
         return taskDataSource.createTask(params.task)
     }
 

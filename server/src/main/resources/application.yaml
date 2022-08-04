@@ -1,6 +1,5 @@
 spring:
   r2dbc:
-    driver-class-name: com.mysql.cj.jdbc.Driver
     url: r2dbc:pool:mysql://localhost:3307/togo_db
     username: root
     password: 123456
