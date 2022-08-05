@@ -26,6 +26,10 @@ docker-compose -p togo-local -f docker-compose.yml up
 gradle server:test
 ```
 
+### what I can improve
+- Use **UUID** to save id replace **String**
+- User **redis** to **caching**
+
 ### DB Schema
 
 ```sql
