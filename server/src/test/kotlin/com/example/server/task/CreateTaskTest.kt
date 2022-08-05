@@ -2,11 +2,10 @@ package com.example.server.task
 
 import com.example.server.BaseTest
 import com.example.server.config.database.DatabaseConfigTest
-import com.example.server.display.TaskRequest
+import com.example.server.rest.request.TaskRequest
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.test.context.ContextConfiguration
@@ -93,7 +92,7 @@ class CreateTaskTest : BaseTest() {
     }
 
     @Test
-    fun `createTaks-400_002 when user is not exit`() {
+    fun `createTaks-400_002 when user is not exist`() {
         val request = TaskRequest(
             title = "test",
             description = "aa",
