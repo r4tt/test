@@ -1,4 +1,4 @@
-package com.example.server.rest.respone
+package com.example.server.rest.response
 
 import com.example.domain.model.TaskEntity
 import java.time.LocalDateTime

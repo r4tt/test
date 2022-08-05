@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.codec.ServerCodecConfigurer
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.*
-import com.example.server.rest.respone.ErrorResponse
+import com.example.server.rest.response.ErrorResponse
 
 
 @Component
