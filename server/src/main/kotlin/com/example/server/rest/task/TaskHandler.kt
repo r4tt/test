@@ -3,9 +3,9 @@ package com.example.server.rest.task
 import com.example.domain.model.TaskEntity
 import com.example.domain.usecase.task.CreateTask
 import com.example.domain.util.getOrElse
-import com.example.server.display.TaskRequest
-import com.example.server.display.TaskRespone
-import com.example.server.mapping.toDisplayModel
+import com.example.server.rest.request.TaskRequest
+import com.example.server.rest.respone.TaskRespone
+import com.example.server.rest.respone.toDisplayModel
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.*
 
